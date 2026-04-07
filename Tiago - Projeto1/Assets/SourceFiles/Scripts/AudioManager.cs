@@ -1,66 +1,96 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    private AudioSource systemSource;
+    private List<AudioSource> activeSources;
 
-    private AudioSource systemaSource;
-    private List<AudioSource> activeSource;
-
-
-
+    #region Singleton
+    
+    public static AudioManager Instance;
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
-            systemaSource = GetComponent<AudioSource>();
-            activeSource = new List<AudioSource>();
+            systemSource = GetComponent<AudioSource>();
+            activeSources = new List<AudioSource>();
         }
         else
         {
             Destroy(gameObject);
         }
     }
+    #endregion
 
-    #region AudioControls3D
+    #region AudioControls2D
 
-    public void Play(AudioClip clip, AudioSource source)
+    public void Play(AudioClip clip)
     {
-        if (!activeSource.Contains(source))
-            activeSource.Add(source);
-        systemaSource.Stop();
-        systemaSource.clip = clip;
-        systemaSource.Play();
+        systemSource.Stop();
+        systemSource.clip = clip;
+        systemSource.Play();
     }
 
-    public void Stop(AudioClip clip)
+    public void Stop()
     {
-        systemaSource.PlayOneShot(clip);
-    }
-
-    public void Stop(AudioSource source)
-    {
-        if (activeSource.Contains(source))
-            activeSource.Remove(source);
-        source.Stop();
-        systemaSource.Stop();
+        systemSource.Stop();
     }
 
     public void Pause()
     {
-        systemaSource.Pause();
+        systemSource.Pause();
     }
 
     public void Resume()
     {
-        systemaSource.UnPause();
+        systemSource.UnPause();
     }
-#endregion
 
+    public void PlayOneShot(AudioClip clip)
+    {
+        systemSource.PlayOneShot(clip);
+    }
 
+    #endregion
+    
+    #region AudioControls3D
 
+    public void Play(AudioClip clip, AudioSource source)
+    {
+        if(!activeSources.Contains(source))
+            activeSources.Add(source);
+        source.Stop();
+        source.clip = clip;
+        source.Play();
+    }
+
+    public void Stop(AudioSource source)
+    {
+        if(activeSources.Contains(source))
+            activeSources.Remove(source);
+        source.Stop();
+    }
+
+    public void Pause(AudioSource source)
+    {
+        source.Pause();
+    }
+
+    public void Resume(AudioSource source)
+    {
+        source.UnPause();
+    }
+
+    public void PlayOneShot(AudioClip clip, AudioSource source)
+    {
+        source.PlayOneShot(clip);
+    }
+
+    #endregion
 }
