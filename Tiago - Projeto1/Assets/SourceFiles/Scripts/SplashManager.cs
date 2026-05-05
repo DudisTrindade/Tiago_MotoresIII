@@ -10,6 +10,6 @@ public class SplashManager : MonoBehaviour
 
     void CarregarMenu()
     {
-        SceneManager.LoadScene("_MenuPrincipal");
+        SceneManager.LoadScene("MenuPrincipal");
     }
 }
