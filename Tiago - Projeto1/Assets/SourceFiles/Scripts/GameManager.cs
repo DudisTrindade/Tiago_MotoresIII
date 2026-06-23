@@ -18,13 +18,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Escuta quando a cena muda
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
@@ -39,8 +37,7 @@ public class GameManager : MonoBehaviour
         LoadScene("SplashScene");
     }
 
-    // Chamado automaticamente quando uma cena carrega
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("Cena carregada: " + scene.name);
 
@@ -55,6 +52,12 @@ public class GameManager : MonoBehaviour
         else if (scene.name == "GetStarted_Scene")
         {
             SetState(GameState.Gameplay);
+
+            // Carrega a GUI junto da Gameplay
+            if (!SceneManager.GetSceneByName("GUI").isLoaded)
+            {
+                SceneManager.LoadScene("GUI", LoadSceneMode.Additive);
+            }
         }
     }
 
@@ -64,21 +67,23 @@ public class GameManager : MonoBehaviour
         Debug.Log("Estado atual: " + currentState);
     }
 
-    // Controle de cenas (SÓ o GameManager pode fazer isso)
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
 
-    // Input allocation (simples)
     public void SetupPlayerInput(PlayerInput playerInput)
     {
         Debug.Log("Input atribuído ao jogador: " + playerInput.name);
     }
-    
+
     public void Load()
     {
         SceneManager.LoadScene(sceneName);
     }
-    
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 }

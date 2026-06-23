@@ -8,6 +8,8 @@ public class PlayerCoins : MonoBehaviour
     {
         coins++;
 
+        Debug.Log("Moeda coletada! Total: " + coins);
+
         PlayerObserverManager.NotifyCoinsChanged(coins);
     }
 }
