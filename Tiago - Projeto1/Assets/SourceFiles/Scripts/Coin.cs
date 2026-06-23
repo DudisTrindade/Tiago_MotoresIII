@@ -2,25 +2,20 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public float velocidadeRotacao = 180f;
+    [SerializeField] private float velocidadeRotacao = 180f;
 
-    void Update()
+    private void Update()
     {
-        transform.Rotate(velocidadeRotacao * Time.deltaTime, 0, 0);
+        transform.Rotate(0, velocidadeRotacao * Time.deltaTime, 0);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            PlayerCoins playerCoins = other.GetComponent<PlayerCoins>();
+        if (!other.CompareTag("Player"))
+            return;
 
-            if (playerCoins != null)
-            {
-                playerCoins.CollectCoin();
-            }
+        PlayerCoins playerCoins = other.GetComponent<PlayerCoins>();
 
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }

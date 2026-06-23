@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CoinUI : MonoBehaviour
 {
-    public TMP_Text textoMoedas;
+    [SerializeField] private TMP_Text textoMoedas;
 
     private void OnEnable()
     {
@@ -13,11 +13,6 @@ public class CoinUI : MonoBehaviour
     private void OnDisable()
     {
         PlayerObserverManager.OnCoinsChanged -= AtualizarMoedas;
-    }
-
-    private void Start()
-    {
-        textoMoedas.text = "Moedas: 0";
     }
 
     private void AtualizarMoedas(int quantidade)
