@@ -184,6 +184,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.20002048
       objectReference: {fileID: 0}
+    - target: {fileID: 7477988938871578672, guid: 332df604d1fc7fd46ae4013ce9b4a5d6, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: d83edb18e664ad8489a2c83a5586309b, type: 3}
+    - target: {fileID: 7477988938871578672, guid: 332df604d1fc7fd46ae4013ce9b4a5d6, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Gameplay
+      objectReference: {fileID: 0}
     - target: {fileID: 7487136808262452160, guid: 332df604d1fc7fd46ae4013ce9b4a5d6, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -1988,7 +1996,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372258869}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
@@ -2040,7 +2048,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1

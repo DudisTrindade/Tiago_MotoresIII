@@ -196,6 +196,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -248,7 +249,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209178303}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
@@ -300,7 +301,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -507,8 +508,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.8442338}
   m_AnchorMax: {x: 0.2847737, y: 1}
-  m_AnchoredPosition: {x: -97, y: -75}
-  m_SizeDelta: {x: -475.5673, y: -20.3438}
+  m_AnchoredPosition: {x: -269, y: -15}
+  m_SizeDelta: {x: -424.944, y: -29.2179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1536244194
 MonoBehaviour:
@@ -557,8 +558,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.3
-  m_fontSizeBase: 40.3
+  m_fontSize: 19.2
+  m_fontSizeBase: 19.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
