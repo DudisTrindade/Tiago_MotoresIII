@@ -14,7 +14,16 @@ public class Coin : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        PlayerCoins playerCoins = other.GetComponent<PlayerCoins>();
+        PlayerCoins playerCoins =
+            other.GetComponentInParent<PlayerCoins>();
+
+        if (playerCoins == null)
+        {
+            Debug.Log("PlayerCoins não encontrado!");
+            return;
+        }
+
+        playerCoins.CollectCoin();
 
         Destroy(gameObject);
     }
